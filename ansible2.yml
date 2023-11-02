@@ -1,0 +1,14 @@
+- name: copyplaybook
+  hosts: all
+  become: yes
+  tasks:
+    - name: shell_commands
+      shell: ls
+      register: target_ls
+      shell: cat /root/manu/c1
+      register: target_cat
+    - debug:
+        var: target_ls.stdout_lines
+        var: target_cat.stdout_lines
+      tags:
+        - debug
